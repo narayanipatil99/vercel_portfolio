@@ -1,0 +1,439 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 98%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 199 89% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 199 89% 48%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 199 89% 48%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 240 50% 3%;
+    --foreground: 210 40% 98%;
+    --card: 240 40% 6%;
+    --card-foreground: 210 40% 98%;
+    --popover: 240 45% 6%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 199 89% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 30% 10%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 240 30% 10%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 199 89% 48%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 240 30% 12%;
+    --input: 240 30% 12%;
+    --ring: 199 89% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+}
+
+.animate-gradient {
+  background-size: 200%;
+  animation: animatedGradient 6s ease infinite;
+}
+
+@keyframes animatedGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.font-sans {
+  font-family: var(--font-inter);
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-in-out forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stagger-animation > * {
+  opacity: 0;
+  animation: staggerFadeIn 0.5s ease-in-out forwards;
+}
+
+.stagger-animation > *:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.stagger-animation > *:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.stagger-animation > *:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.stagger-animation > *:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.stagger-animation > *:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.stagger-animation > *:nth-child(6) {
+  animation-delay: 0.6s;
+}
+.stagger-animation > *:nth-child(7) {
+  animation-delay: 0.7s;
+}
+.stagger-animation > *:nth-child(8) {
+  animation-delay: 0.8s;
+}
+
+@keyframes staggerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.grid-pattern {
+  background-image: linear-gradient(rgba(var(--primary), 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--primary), 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.data-dots {
+  background-image: radial-gradient(rgba(var(--primary), 0.15) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.glow-text {
+  text-shadow: 0 0 15px rgba(var(--primary), 0.6);
+  position: relative;
+}
+
+@keyframes textGlow {
+  0%,
+  100% {
+    text-shadow: 0 0 15px rgba(var(--primary), 0.6);
+  }
+  50% {
+    text-shadow: 0 0 25px rgba(var(--primary), 0.8);
+  }
+}
+
+.hero-animate-text {
+  animation: textGlow 3s ease-in-out infinite;
+}
+
+.data-flow-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.data-flow-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(45deg, rgba(var(--primary), 0.05) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(var(--primary), 0.05) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(var(--primary), 0.05) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(var(--primary), 0.05) 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  z-index: -1;
+}
+
+.terminal-text {
+  font-family: var(--font-mono);
+  color: rgba(var(--primary), 1);
+}
+
+.code-block {
+  position: relative;
+  background: rgba(var(--card), 1);
+  border-radius: var(--radius);
+  padding: 1rem;
+  border: 1px solid rgba(var(--primary), 0.2);
+  overflow: hidden;
+}
+
+.code-block::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, rgba(var(--primary), 1), rgba(var(--primary), 0.5));
+}
+
+.matrix-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.matrix-bg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: repeating-linear-gradient(
+      0deg,
+      rgba(var(--primary), 0.05),
+      rgba(var(--primary), 0.05) 1px,
+      transparent 1px,
+      transparent 30px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(var(--primary), 0.05),
+      rgba(var(--primary), 0.05) 1px,
+      transparent 1px,
+      transparent 30px
+    );
+  z-index: -1;
+}
+
+.section-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(var(--primary), 0.2), transparent);
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.project-card {
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px -20px rgba(var(--primary), 0.3);
+}
+
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px -15px rgba(var(--primary), 0.3);
+}
+
+.section-transition {
+  position: relative;
+  overflow: hidden;
+}
+
+.section-transition::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, transparent, rgba(var(--primary), 0.3), transparent);
+  opacity: 0.5;
+}
+
+.futuristic-grid {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, rgba(var(--primary), 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(var(--primary), 0.05) 1px, transparent 1px);
+}
+
+.glow-card {
+  box-shadow: 0 0 20px rgba(var(--primary), 0.15);
+  transition: all 0.3s ease;
+}
+
+.glow-card:hover {
+  box-shadow: 0 0 30px rgba(var(--primary), 0.3);
+}
+
+.cyber-bg {
+  background-color: hsl(var(--background));
+  background-image: radial-gradient(circle at 25% 25%, rgba(var(--primary), 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(var(--primary), 0.05) 0%, transparent 50%);
+}
+
+.data-lines {
+  position: relative;
+}
+
+.data-lines::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(90deg, transparent 50%, rgba(var(--primary), 0.03) 50%),
+    linear-gradient(rgba(var(--primary), 0.03) 50%, transparent 50%);
+  background-size: 100px 100px;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.project-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.project-image img {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-image:hover img {
+  transform: scale(1.05);
+}
+
+.project-image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 70%, rgba(var(--card), 0.8) 100%);
+  z-index: 1;
+}
+
+.neon-border {
+  position: relative;
+}
+
+.neon-border::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(45deg, rgba(var(--primary), 0.6), transparent, rgba(var(--primary), 0.6));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.tech-dots {
+  background-image: radial-gradient(rgba(var(--primary), 0.2) 1px, transparent 1px),
+    radial-gradient(rgba(var(--primary), 0.1) 1px, transparent 1px);
+  background-size: 20px 20px, 30px 30px;
+  background-position: 0 0, 10px 10px;
+}
+
+/* Project card styles for consistent sizing */
+.project-card-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-card-image {
+  height: 200px;
+  width: 100%;
+  position: relative;
+}
+
+.project-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card-title {
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.project-card-description {
+  flex: 1;
+  min-height: 180px;
+}
+
+.project-card-footer {
+  padding-top: 1rem;
+}
